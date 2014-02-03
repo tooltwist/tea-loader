@@ -4,11 +4,11 @@ var csv = require("fast-csv"),
 
 
 
-exports.load = function(accessToken, sourceId, csvfile) {
+exports.load = function(host, accessToken, sourceId, csvfile) {
 	
-	console.log("categoryMap_csv.load(" + accessToken + ", " + sourceId + ", " + csvfile + ")");
+	console.log("categoryMap_csv.load(" + host + ", " + accessToken + ", " + sourceId + ", " + csvfile + ")");
 	
-	pass1_validate(accessToken, sourceId, csvfile);
+	pass1_validate(host, accessToken, sourceId, csvfile);
 }
 
 /**
@@ -16,7 +16,7 @@ exports.load = function(accessToken, sourceId, csvfile) {
  *	on each line. Also, check that the TEA categories are all valid (ZZZZ NOT YET).
  *	@return Async function
  */
-function pass1_validate(accessToken, sourceId, csvfile) {
+function pass1_validate(host, accessToken, sourceId, csvfile) {
 
 	console.log("Pass 1: Validation")
 	var stream = fs.createReadStream(csvfile);
@@ -47,7 +47,7 @@ function pass1_validate(accessToken, sourceId, csvfile) {
 			// Finished loading the mapping. Send it to TEA.
 			console.log("  - pass 1 complete")
 			console.log("  - header line and " + count + " data lines passed validation.")
-			pass2_loadMap(accessToken, sourceId, csvfile);
+			pass2_loadMap(host, accessToken, sourceId, csvfile);
 		})
 		.on("error", function(){
 			console.log("Pass 1: error loading CSV file.")
@@ -60,7 +60,7 @@ function pass1_validate(accessToken, sourceId, csvfile) {
  *	as the property name, and the tea_category as the value.
  *	@return Async function
  */
-function pass2_loadMap(accessToken, sourceId, csvfile) {
+function pass2_loadMap(host, accessToken, sourceId, csvfile) {
 	console.log("Pass 2: Load mapping")
 	var stream = fs.createReadStream(csvfile);
 	stream.on('error', function (error) {console.log("Caught", error);bomb('CSV file error.')});
@@ -83,7 +83,7 @@ function pass2_loadMap(accessToken, sourceId, csvfile) {
 
 			// Finished loading the mapping. Send it to TEA.
 			console.log('  - pass 2 complete');
-			pass3_upload(accessToken, sourceId, map);
+			pass3_upload(host, accessToken, sourceId, map);
 		})
 		.on("error", function(){
 			bomb("Pass 2: error loading CSV file.")
@@ -95,9 +95,9 @@ function pass2_loadMap(accessToken, sourceId, csvfile) {
  *	Third pass. Upload the new category mappings into TEA using the RESTful API.
  *	@return Async function
  */
-function pass3_upload(accessToken, sourceId, map) {
+function pass3_upload(host, accessToken, sourceId, map) {
 	console.log("Pass 3: Upload to TEA")
-	
+
 	var json = {
 		access_token: accessToken,
 		source_id: sourceId,
@@ -106,11 +106,11 @@ function pass3_upload(accessToken, sourceId, map) {
 	};
 	
 	// Send it to TEA via the RESTful API
-	var url = 'http://localhost:8080/categoryMap';
+	var url = 'http://' + host + '/categoryMap';
 	
 	console.log('  - calling TEA to update categoryMap:')
-	// console.log('  url=>' + url + ' (POST)')
-	// console.log('  data=>\n', json)
+	console.log('  url=>' + url + ' (POST)')
+	console.log('  data=>\n', json)
 	
 	request({
 		method: 'POST',
