@@ -1,0 +1,18 @@
+{
+  "appenders": [
+    {
+    	"type": "console"
+    },
+    {
+      "type": "dateFile",
+      "filename": "logs/tea-loader.log",
+      "pattern": "-yyyy-MM-dd"
+    },
+    {
+      "type": "dateFile",
+      "filename": "logs/tea-loader-report.txt",
+      "pattern": "-yyyy-MM-dd",
+      "category" : "report"
+    }
+  ]
+}
