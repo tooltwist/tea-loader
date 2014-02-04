@@ -9,7 +9,7 @@ var configPath = "config/";
 
 log4js.configure(configPath + "log4js-config.json",{level: "INFO"});
 
-var logger = log4js.getLogger();
+var logger = log4js.getLogger('tea-loader');
 var reportLogger = log4js.getLogger('report');
 
 
@@ -111,6 +111,7 @@ var ProductLoader = {
 				if(row.length != ProductLoader.headers.length){
 					lineErrors += "Line " + count + " currently has " + row.length + 
 								  " columns. Proper format requires " + ProductLoader.headers.length + " columns.\n";
+					lineErrors += "Row content: " + row;
 				}
 			}
 		})
@@ -226,7 +227,7 @@ var ProductLoader = {
 
 	/**
 	*	Loads the products from the dropshipper's csv file onto a
-	*	a property array.
+	*	property array.
 	*/
 	parseDetails : function(credentials, csvfile, next){
 		report("Pass 2: Load Details")
@@ -242,6 +243,7 @@ var ProductLoader = {
 		csv()
 		.from.stream(stream, { columns : true })
 		.on('record', function(item){
+			item.lineNumber = ++count;
 			ProductLoader.insertVariant(products, ProductLoader.createVariant(item));
 		})
 		.on('end', function(count){
@@ -260,7 +262,8 @@ var ProductLoader = {
 	*/
 	persist : function(credentials, next){
 
-		report("Pass 3: Upload to TEA")
+		report("Pass 3: Upload to TEA");
+		log("Uploading products, please wait...");
 	
 		var url = 'http://' + credentials.host + '/loadProducts';
 		var json = {
@@ -297,6 +300,7 @@ var ProductLoader = {
 	*/
 	createVariant: function(item){
 		var variant = {
+			lineNumber : item.lineNumber,
 			categoryId : ProductLoader.categoryIdMap[ProductLoader.categoryMap[item.Categories]],
 			productName : item.Name,
 			manufacturer : item.Manufacturer,
@@ -335,15 +339,14 @@ var ProductLoader = {
 		if( productIndex != -1 ){ // item product was found
 			products[productIndex].variants.push(itemVariant);
 		} else { // add a new product under this category
-			// uncomment if products with no category will not be uploaded.
-			//if(itemVariant.categoryId == undefined){
-			//	log("Item : " + itemVariant.product.name + " will not be uploaded since it does not have a category.");
-			//} else {
-			products.push({
-				name : itemVariant.productName,
-				variants : [itemVariant]
-			});
-			//}
+			if(itemVariant.categoryId == undefined){
+				report("Item : " + itemVariant.productName + " will not be uploaded since it does not have a category.");
+			} else {
+				products.push({
+					name : itemVariant.productName,
+					variants : [itemVariant]
+				});
+			}
 		}
 	}, // end insertVariant method
 
