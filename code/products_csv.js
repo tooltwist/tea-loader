@@ -315,6 +315,7 @@ var ProductLoader = {
 			imagePath : item.ImageUrl,
 			imageName : ProductLoader.getImageName(item.ImageUrl),
 			//properties below are hard coded since they are not provided in the dropshipper's file
+			imageSize : 0,
 			quantity : 0,
 			barcode : null,
 			format : "",
