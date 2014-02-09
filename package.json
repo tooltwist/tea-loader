@@ -4,9 +4,8 @@
   "private": true,
   "dependencies": {
     "csv": "*",
-    "fs": "*",
     "request": "*",
-    "strip": "0.0.6",
-    "log4js": "~0.6.9"
+    "strip": "*",
+    "log4js": "*"
   }
 }
