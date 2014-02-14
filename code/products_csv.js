@@ -2,12 +2,11 @@ var csv = require("csv"),
 	fs = require("fs"),
 	request = require('request'),
 	strip = require('strip'),
-	log4js = require('log4js');
+	log4js = require('log4js'),
+	config = require("../config/config");
 
 
-var configPath = "config/";
-
-log4js.configure(configPath + "log4js-config.json", {
+log4js.configure(config.settings.logger_config_file_path, {
 	level: "INFO"
 });
 
@@ -36,23 +35,20 @@ function bomb(message) {
 	process.exit(1);
 }
 
-exports.load = function(host, accessToken, sourceId, csvfile) {
+exports.load = function(host, accessToken, sourceId, csvFile) {
 
-	var args = {
-		host: host,
-		accessToken: accessToken,
-		sourceId: sourceId,
-		csvfile: csvfile
-	}
-	report("Loading " + csvfile + " with the following parameters: " + JSON.stringify(args));
-	ProductLoader.execute(args);
-}
+	var settings = config.settings;
+	settings.host = host;
+	settings.accessToken = accessToken;
+	settings.sourceId = sourceId;
+	settings.csvFile = csvFile;
+
+	report("Loading " + csvFile + " with the following parameters: " + JSON.stringify(settings));
+	ProductLoader.execute(settings);
+};
 
 var ProductLoader = (function() {
-	var headers = ['Name', 'Price', 'Weight', 'Manufacturer', 'Sku',
-		'Summary', 'Description', 'Categories', 'ImageUrl',
-		'Sub_ImageUrl', 'option'
-	];
+
 	var categoryMap = [];
 	var categoryIdMap = [];
 	var varianceMap = [];
@@ -61,32 +57,32 @@ var ProductLoader = (function() {
 	/**
 	 *	Entry point for the product loader
 	 */
-	function execute(args) {
+	function execute(settings) {
 
 		functions = [
 			/* Step 1 */
 			function(next) {
-				validate(args, next)
+				validate(settings, next);
 			},
 			/* Step 2 */
 			function(next) {
-				initializeCategoryMapping(next)
+				initializeCategoryMapping(settings, next);
 			},
 			/* Step 3 */
 			function(next) {
-				initializeVarianceMapping(next)
+				initializeVarianceMapping(settings, next);
 			},
 			/* Step 4 */
 			function(next) {
-				initializeCategoryIdMapping(args, next)
+				initializeCategoryIdMapping(settings, next);
 			},
 			/* Step 5 */
 			function(next) {
-				parseDetails(args, next)
+				parseDetails(settings, next);
 			},
 			/* Step 6 */
 			function(next) {
-				persist(args, next)
+				persist(settings, next);
 			}
 		];
 		/**
@@ -109,12 +105,12 @@ var ProductLoader = (function() {
 	/**
 	 *	Checks that the csv file is in the correct format.
 	 */
-	function validate(args, next) {
+	function validate(settings, next) {
 
-		report("Pass 1: Validation")
-		var stream = fs.createReadStream(args.csvfile);
+		report("Pass 1: Validation");
+		var stream = fs.createReadStream(settings.csvFile);
 		stream.on('error', function(error) {
-			bomb('CSV file error.')
+			bomb('CSV file error.');
 		});
 
 		// Verify each line of the CSV file
@@ -129,21 +125,21 @@ var ProductLoader = (function() {
 			.on('record', function(row) {
 				if (count++ === 0) {
 					for (var i = 0; i < row.length; i++) {
-						if (headers[i] == undefined || headers[i] != row[i]) {
-							lineErrors += "File headers should be: " + headers + "\n";
+						if (settings.product_headers[i] === undefined || settings.product_headers[i] !== row[i]) {
+							lineErrors += "File settings.product_headers should be: " + settings.product_headers + "\n";
 						}
-					};
+					}
 				} else {
-					if (row.length != headers.length) {
+					if (row.length != settings.product_headers.length) {
 						lineErrors += "Line " + count + " currently has " + row.length +
-							" columns. Proper format requires " + headers.length + " columns.\n";
+							" columns. Proper format requires " + settings.product_headers.length + " columns.\n";
 						lineErrors += "Row content: " + row;
 					}
 				}
 			})
 			.on('end', function(count) {
 				report("Done reading csv file containing " + count + " records.");
-				if (lineErrors != "") {
+				if (lineErrors !== "") {
 					bomb(lineErrors.substr(0, lineErrors.length - 1)); //remove trailing newline character.
 				}
 				next();
@@ -158,12 +154,12 @@ var ProductLoader = (function() {
 	 *	Loads the csv file that contains the mapping of Dropshipper categories
 	 *	to Metrosix categories and places it in a property map.
 	 */
-	function initializeCategoryMapping(next) {
+	function initializeCategoryMapping(settings, next) {
 
-		report("Retrieving Dropshipper -> Metrosix category mapping contained in: " + configPath + "category-mapping.csv");
-		var stream = fs.createReadStream(configPath + "category-mapping.csv");
+		report("Retrieving Dropshipper -> Metrosix category mapping contained in: " + settings.category_mapping_path);
+		var stream = fs.createReadStream(settings.category_mapping_path);
 		stream.on('error', function(error) {
-			bomb('CSV file error.')
+			bomb('CSV file error.');
 		});
 
 		var categoryMap = [];
@@ -190,12 +186,12 @@ var ProductLoader = (function() {
 	 *	Loads the csv file that contains the mapping of variance types
 	 *	and places it in a property map.
 	 */
-	function initializeVarianceMapping(next) {
+	function initializeVarianceMapping(settings, next) {
 
-		report("Retrieving variance mapping contained in: " + configPath + "variance-mapping.csv");
-		var stream = fs.createReadStream(configPath + "variance-mapping.csv");
+		report("Retrieving variance mapping contained in: " + settings.variance_mapping_path);
+		var stream = fs.createReadStream(settings.variance_mapping_path);
 		stream.on('error', function(error) {
-			bomb('CSV file error.')
+			bomb('CSV file error.');
 		});
 
 		var varianceMap = [];
@@ -223,16 +219,16 @@ var ProductLoader = (function() {
 	 *	Loads the category IDs from Tea /getParentCategories
 	 *	and places it in a property map.
 	 */
-	function initializeCategoryIdMapping(credentials, next) {
+	function initializeCategoryIdMapping(settings, next) {
 
 		report("Retrieving Metrosix Category ID mapping.");
 
 		var categoryIds = [];
 
-		var url = 'http://' + credentials.host + '/getParentCategories';
+		var url = 'http://' + settings.host + '/getParentCategories';
 		var json = {
-			accessToken: credentials.accessToken
-		}
+			accessToken: settings.accessToken
+		};
 
 		request({
 				method: 'POST',
@@ -246,13 +242,13 @@ var ProductLoader = (function() {
 					bomb("Unexpected status code " + response.statusCode);
 				} else {
 					if (body === undefined || body.response === "Error") {
-						bomb("Failed to retrieve category IDs.")
+						bomb("Failed to retrieve category IDs.");
 					}
 					for (var i = body.categories.length - 1; i >= 0; i--) {
 						categoryIds[body.categories[i].name.trim()] = body.categories[i].category_id;
-					};
+					}
 					categoryIdMap = categoryIds;
-					report("Successfully retrieved " + body.categories.length + " Category IDs.")
+					report("Successfully retrieved " + body.categories.length + " Category IDs.");
 					next();
 				}
 			});
@@ -263,11 +259,11 @@ var ProductLoader = (function() {
 	 *	Loads the products from the dropshipper's csv file onto a
 	 *	property array.
 	 */
-	function parseDetails(credentials, csvfile, next) {
-		report("Pass 2: Load Details")
-		var stream = fs.createReadStream(csvfile);
+	function parseDetails(settings, next) {
+		report("Pass 2: Load Details");
+		var stream = fs.createReadStream(settings.csvFile);
 		stream.on('error', function(error) {
-			bomb('CSV file error.')
+			bomb('CSV file error.');
 		});
 
 		// Load csv file rows into a map
@@ -298,36 +294,40 @@ var ProductLoader = (function() {
 	/**
 	 *	Saves the products into the database using webservices.
 	 */
-	function persist(credentials, next) {
+	function persist(settings, next) {
 
-		report("Pass 3: Upload to TEA");
-		log("Uploading products, please wait...");
+		if (products && products.length > 0) {
+			report("Pass 3: Upload to TEA");
+			log("Uploading products, please wait...");
 
-		var url = 'http://' + credentials.host + '/loadProducts';
-		var json = {
-			accessToken: credentials.accessToken,
-			products: products
-		};
+			var url = 'http://' + settings.host + '/loadProducts';
+			var json = {
+				accessToken: settings.accessToken,
+				products: products
+			};
 
-		request({
-			method: 'POST',
-			url: url,
-			json: json
-		}, function(error, response, body) {
+			request({
+				method: 'POST',
+				url: url,
+				json: json
+			}, function(error, response, body) {
 
-			if (error) {
-				bomb("Unexpected error: ", error);
-			} else if (response.statusCode != 200) {
-				bomb("Unexpected status code " + response.statusCode);
-			} else {
-				if (body === undefined || body.response !== 'Success') {
-					bomb('ERROR: response="' + body.response + '", message="' + body.message + '"');
+				if (error) {
+					bomb("Unexpected error: ", error);
+				} else if (response.statusCode != 200) {
+					bomb("Unexpected status code " + response.statusCode);
 				} else {
-					report("Successfully saved products.");
+					if (body === undefined || body.response !== 'Success') {
+						bomb('ERROR: response="' + body.response + '", message="' + body.message + '"');
+					} else {
+						report("Successfully saved products.");
+					}
+					next();
 				}
-				next();
-			}
-		});
+			});
+		} else {
+			report("No products to upload.");
+		}
 
 	} // end persist method
 
@@ -364,7 +364,7 @@ var ProductLoader = (function() {
 			metaKeyword: null,
 			serialNo: null,
 			statusOnly: "0"
-		}
+		};
 		return variant;
 	} // end createVariant method
 
@@ -378,7 +378,7 @@ var ProductLoader = (function() {
 		if (productIndex != -1) { // item product was found
 			products[productIndex].variants.push(itemVariant);
 		} else { // add a new product under this category
-			if (itemVariant.categoryId == undefined) {
+			if (itemVariant.categoryId === undefined) {
 				report("Item : " + itemVariant.productName + " will not be uploaded since it does not have a category.");
 			} else {
 				products.push({
@@ -393,7 +393,7 @@ var ProductLoader = (function() {
 	 *	Parses the imageUrl provided for the file extension
 	 */
 	function getImageExtension(imageUrl) {
-		if (imageUrl != undefined && imageUrl.length > 0 && imageUrl.lastIndexOf(".") != -1) {
+		if (imageUrl !== undefined && imageUrl.length > 0 && imageUrl.lastIndexOf(".") != -1) {
 			return imageUrl.substr(imageUrl.lastIndexOf(".") + 1);
 		}
 	}
@@ -402,7 +402,7 @@ var ProductLoader = (function() {
 	 *	Parses the imageUrl provided for the file name
 	 */
 	function getImageName(imageUrl) {
-		if (imageUrl != undefined && imageUrl.length > 0 && imageUrl.lastIndexOf("/") != -1) {
+		if (imageUrl !== undefined && imageUrl.length > 0 && imageUrl.lastIndexOf("/") !== -1) {
 			return imageUrl.substring(imageUrl.lastIndexOf("/") + 1, imageUrl.lastIndexOf("."));
 		}
 	}
@@ -420,6 +420,6 @@ var ProductLoader = (function() {
 
 	return {
 		execute: execute
-	}
+	};
 
 })();
