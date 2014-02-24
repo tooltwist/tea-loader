@@ -1,20 +1,16 @@
 {
-  "appenders": [
-                {
-                	"type": "console",
-                	"category" : "tea-loader"
-                },
-			    {
-			      "type": "dateFile",
-			      "filename": "logs/tea-loader-log.txt",
-			      "pattern": "-yyyy-MM-dd",
-			      "category" : "tea-loader"
-			    },
-			    {
-			      "type": "dateFile",
-			      "filename": "logs/tea-loader-report.txt",
-			      "pattern": "-yyyy-MM-dd",
-			      "category" : "report"
-			    }
-  ]
+    "appenders": [{
+        "type": "console",
+        "category": "tea-loader"
+    }, {
+        "type": "dateFile",
+        "filename": "logs/tea-loader-log.txt",
+        "pattern": "-yyyy-MM-dd",
+        "category": "tea-loader"
+    }, {
+        "type": "dateFile",
+        "filename": "logs/tea-loader-report.txt",
+        "pattern": "-yyyy-MM-dd",
+        "category": "report"
+    }]
 }

@@ -1,0 +1,16 @@
+{
+  "name": "utils",
+  "version": "0.0.1",
+  "description": "Module for utility functions.",
+  "main": "./utils.js",
+  "private": true,
+  "plugin": {
+    "module": "./utils",
+    "consumes": ["logger"],
+    "provides": ["utils"]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio Wellington A. Alejandro <antonio.alejandro@twistresources.com>"
+}

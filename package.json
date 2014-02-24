@@ -1,11 +1,13 @@
 {
   "name": "tea-loader",
   "version": "0.0.1",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "csv": "*",
     "request": "*",
     "strip": "*",
-    "log4js": "*"
+    "log4js": "*",
+    "architect": "*"
   }
 }
