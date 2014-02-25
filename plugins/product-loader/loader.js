@@ -179,7 +179,7 @@ module.exports = function setup(options, imports, register) {
             item.lineNumber = ++count;
             insertVariant(productsList, createVariant(item));
         }).on('end', function(count) {
-            logger.report("Done reading csv file containing " + count + " records with " + productsList.length + " productsList .");
+            logger.report("Done reading csv file containing " + count + " rows with " + productsList.length + " valid products.");
             products = productsList;
             callback();
         }).on('error', function(err) {

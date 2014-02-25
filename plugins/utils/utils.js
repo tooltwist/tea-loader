@@ -51,7 +51,7 @@ module.exports = function setup(options, imports, register) {
     function getResourceExtension(fromPath) {
         var start = fromPath.lastIndexOf(".");
         if (fromPath && fromPath.length > 0 && start !== -1) {
-            return fromPath.substr(start + 1);
+            return fromPath.substr(start);
         }
     }
 
@@ -60,9 +60,8 @@ module.exports = function setup(options, imports, register) {
      */
     function getResourceName(fromPath) {
         var start = fromPath.lastIndexOf("/");
-        var end = fromPath.lastIndexOf(".");
         if (fromPath && fromPath.length > 0 && start !== -1) {
-            return fromPath.substring(start + 1, end);
+            return fromPath.substring(start + 1);
         }
     }
 
