@@ -237,17 +237,23 @@ module.exports = function setup(options, imports, register) {
         variant.weight = item.Weight;
         variant.varianceValue = varianceMap[(item.option + "").toLowerCase()] ? item.option : null;
         variant.variance = varianceMap[(item.option + "").toLowerCase()];
-        variant.images = [{
-            imageType: utils.getResourceExtension(item.ImageUrl),
-            imagePath: item.ImageUrl,
-            imageName: utils.getResourceName(item.ImageUrl),
-            imageSize: 0
-        }, {
-            imageType: utils.getResourceExtension(item.Sub_ImageUrl),
-            imagePath: item.Sub_ImageUrl,
-            imageName: utils.getResourceName(item.Sub_ImageUrl),
-            imageSize: 0
-        }];
+        variant.images = [];
+        if (item.ImageUrl) {
+            variant.images.push({
+                imageType: utils.getResourceExtension(item.ImageUrl),
+                imagePath: item.ImageUrl,
+                imageName: utils.getResourceName(item.ImageUrl),
+                imageSize: 0
+            });
+        }
+        if (item.Sub_ImageUrl) {
+            variant.images.push({
+                imageType: utils.getResourceExtension(item.Sub_ImageUrl),
+                imagePath: item.Sub_ImageUrl,
+                imageName: utils.getResourceName(item.Sub_ImageUrl),
+                imageSize: 0
+            });
+        }
         //properties below are hard coded since they are not provided in the dropshipper's file
         variant.quantity = 0;
         variant.barcode = null;
