@@ -24,6 +24,13 @@ module.exports = function setup(options, imports, register) {
         reportLogger.info(message);
     }
     /**
+     *  Write out a message, and exit with error status
+     */
+    function error(message) {
+        logger.error(message);
+        reportLogger.error(message);
+    }
+    /**
      *	Write out a message, and exit with error status
      */
     function bomb(message) {
@@ -31,10 +38,12 @@ module.exports = function setup(options, imports, register) {
         reportLogger.error(message);
         process.exit(1);
     }
+
     register(null, {
         logger: {
             log: log,
             report: report,
+            error: error,
             bomb: bomb
         }
     });

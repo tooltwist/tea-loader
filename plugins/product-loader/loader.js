@@ -209,7 +209,7 @@ module.exports = function setup(options, imports, register) {
                     logger.bomb("Unexpected status code " + response.statusCode);
                 } else {
                     if (body === undefined || body.response !== 'Success') {
-                        logger.bomb('ERROR: response="' + body.response + '", message="' + body.message + '"');
+                        logger.error("Transaction completed with the following errors:\n" + body.message);
                     } else {
                         logger.report("Successfully saved products.");
                     }
