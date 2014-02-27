@@ -328,6 +328,9 @@ module.exports = function setup(options, imports, register) {
         if(!itemVariant.sku){
             logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have a SKU.");
         }
+        if(!itemVariant.images || itemVariant.images.length < 1){
+            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have any images.");
+        }
         callback(errorFound);
     }
     register(null, {
