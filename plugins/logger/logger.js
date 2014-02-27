@@ -24,11 +24,18 @@ module.exports = function setup(options, imports, register) {
         reportLogger.info(message);
     }
     /**
-     *  Write out a message, and exit with error status
+     *  Write out an error message
      */
     function error(message) {
         logger.error(message);
         reportLogger.error(message);
+    }
+    /**
+     *  Write out a warning message
+     */
+    function warn(message) {
+        logger.warn(message);
+        reportLogger.warn(message);
     }
     /**
      *	Write out a message, and exit with error status
@@ -44,6 +51,7 @@ module.exports = function setup(options, imports, register) {
             log: log,
             report: report,
             error: error,
+            warn: warn,
             bomb: bomb
         }
     });

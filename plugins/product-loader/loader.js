@@ -14,11 +14,12 @@ module.exports = function setup(options, imports, register) {
     var fs = require("fs");
     var strip = require('strip');
     // retrieve plugin options
+    var batchCount = options.batchCount;
     var variance_mapping_path = options.varianceMapping;
     var category_mapping_path = options.categoryMapping;
-    var product_headers = options.product_headers;
+    var productHeaders = options.productHeaders;
     // collections
-    var categoryMap = [];
+    vhoryMap = [];
     var categoryIdMap = [];
     var varianceMap = [];
     var products = [];
@@ -57,13 +58,13 @@ module.exports = function setup(options, imports, register) {
         }).on('record', function(row) {
             if (count++ === 0) {
                 for (var i = 0; i < row.length; i++) {
-                    if (product_headers[i] === undefined || product_headers[i] !== row[i]) {
-                        lineErrors += "File product_headers should be: " + product_headers + "\n";
+                    if (productHeaders[i] === undefined || productHeaders[i] !== row[i]) {
+                        lineErrors += "File headers should be: " + productHeaders + "\n";
                     }
                 }
             } else {
-                if (row.length != product_headers.length) {
-                    lineErrors += "Line " + count + " currently has " + row.length + " columns. Proper format requires " + product_headers.length + " columns.\n";
+                if (row.length != productHeaders.length) {
+                    lineErrors += "Line " + count + " currently has " + row.length + " columns. Proper format requires " + productHeaders.length + " columns.\n";
                     lineErrors += "Row content: " + row;
                 }
             }
@@ -191,42 +192,67 @@ module.exports = function setup(options, imports, register) {
      */
     function persist(settings, callback) {
         if (products && products.length > 0) {
+            var batches = Math.floor(products.length / batchCount);
+            var remaining = products.length % batchCount;
             logger.report("Pass 3: Upload to TEA");
             logger.log("Uploading products, please wait...");
-            var url = 'http://' + settings.host + '/loadProducts';
-            var json = {
-                accessToken: settings.accessToken,
-                products: products
-            };
-            request({
-                method: 'POST',
-                url: url,
-                json: json
-            }, function(error, response, body) {
-                if (error) {
-                    logger.bomb("Unexpected error: ", error);
-                } else if (response.statusCode != 200) {
-                    logger.bomb("Unexpected status code " + response.statusCode);
-                } else {
-                    if (body === undefined || body.response !== 'Success') {
-                        logger.error("Transaction completed with the following errors:\n" + body.message);
+            logger.log("Will be uploading " + batches + " batches of " + batchCount + " and a remainder of " + remaining + " for a total of " + products.length + ".");
+
+            function callNextBatch(i) {
+                logger.report("Loading batch: " + i);
+                persistBatch(settings, products.slice((i - 1) * batchCount, i * batchCount), function(result) {
+                    if (result === undefined || result.response !== 'Success') {
+                        logger.error("Transaction completed with the following errors:\n" + result.message);
                     } else {
                         logger.report("Successfully saved products.");
                     }
-                    callback();
-                }
-            });
+                    if (i <= batches) {
+                        callNextBatch(i + 1);
+                    } else {
+                        logger.report("Loading last batch.");
+                        persistBatch(settings, products.slice((-1) * remaining), function(result) {
+                            if (result === undefined || result.response !== 'Success') {
+                                logger.error("Transaction completed with the following errors:\n" + result.message);
+                            } else {
+                                logger.report("Successfully saved products.");
+                            }
+                            callback();
+                        });
+                    }
+                });
+            }
+            callNextBatch(1);
         } else {
             logger.report("No products to upload.");
         }
     } // end persist method
+    function persistBatch(settings, products, callback) {
+        var url = 'http://' + settings.host + '/loadProducts';
+        var json = {
+            accessToken: settings.accessToken,
+            products: products
+        };
+        request({
+            method: 'POST',
+            url: url,
+            json: json
+        }, function(error, response, body) {
+            if (error) {
+                logger.bomb("Unexpected error: ", error);
+            } else if (response.statusCode != 200) {
+                logger.bomb("Unexpected status code " + response.statusCode);
+            } else {
+                callback(body);
+            }
+        });
+    }
     /**
      *  Creates a variant JSON object using details from the items
      *  retrieved from the csv file.
      */
     function createVariant(item) {
         var variant = {};
-        variant.lineNumber = item.lineNumber;
+        variant.lineNumber = item.lineNumber + 1;
         variant.categoryId = categoryIdMap[categoryMap[item.Categories]];
         variant.productName = item.Name;
         variant.manufacturer = item.Manufacturer;
@@ -276,17 +302,34 @@ module.exports = function setup(options, imports, register) {
             if (productIndex != -1) { // item product was found
                 productList[productIndex].variants.push(itemVariant);
             } else { // add a new product under this category
-                if (itemVariant.categoryId === undefined) {
-                    logger.report("Item : " + itemVariant.productName + " will not be uploaded since it does not have a category.");
-                } else {
-                    productList.push({
-                        name: itemVariant.productName,
-                        variants: [itemVariant]
-                    });
-                }
+                validateVariant(itemVariant, function(err) {
+                    if (!err) {
+                        productList.push({
+                            name: itemVariant.productName,
+                            variants: [itemVariant]
+                        });
+                    }
+                });
             }
         });
     } // end insertVariant method
+    function validateVariant(itemVariant, callback){
+        var errorFound = false;
+        if(!itemVariant.categoryId){
+            logger.error("Line No. " + itemVariant.lineNumber + " Item : " + itemVariant.productName + " will not be uploaded since it does not have a category.");
+            errorFound = true;
+        }
+        if(!itemVariant.shortDescription){
+            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have a short description.");
+        }
+        if(!itemVariant.longDescription){
+            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have a long description.");
+        }
+        if(!itemVariant.sku){
+            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have a SKU.");
+        }
+        callback(errorFound);
+    }
     register(null, {
         productLoader: {
             load: load

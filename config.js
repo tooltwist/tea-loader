@@ -12,9 +12,10 @@ module.exports = [
   { packagePath: "./plugins/utils" },
   {
     packagePath: "./plugins/product-loader",
+    batchCount: 5,
     varianceMapping: "config/variance-mapping.csv",
     categoryMapping: "config/category-mapping.csv",
-    product_headers:  [
+    productHeaders:  [
                         "Name", "Price", "Weight", "Manufacturer",
                         "Sku", "Summary", "Description", "Categories",
                         "ImageUrl", "Sub_ImageUrl", "option"
