@@ -206,18 +206,22 @@ module.exports = function setup(options, imports, register) {
                     } else {
                         logger.report("Successfully saved products.");
                     }
-                    if (i <= batches) {
+                    if (i < batches) {
                         callNextBatch(i + 1);
                     } else {
-                        logger.report("Loading last batch.");
-                        persistBatch(settings, products.slice((-1) * remaining), function(result) {
-                            if (result === undefined || result.response !== 'Success') {
-                                logger.error("Transaction completed with the following errors:\n" + result.message);
-                            } else {
-                                logger.report("Successfully saved products.");
-                            }
+                        if(remaining > 0){
+                            logger.report("Loading last batch.");
+                            persistBatch(settings, products.slice((-1) * remaining), function(result) {
+                                if (result === undefined || result.response !== 'Success') {
+                                    logger.error("Transaction completed with the following errors:\n" + result.message);
+                                } else {
+                                    logger.report("Successfully saved products.");
+                                }
+                                callback();
+                            });
+                        } else {
                             callback();
-                        });
+                        }
                     }
                 });
             }
