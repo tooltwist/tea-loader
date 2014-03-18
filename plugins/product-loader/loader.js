@@ -255,45 +255,49 @@ module.exports = function setup(options, imports, register) {
      *  retrieved from the csv file.
      */
     function createVariant(item) {
+        logger.log("Category Map: " + JSON.stringify(categoryIdMap));
         var variant = {};
         variant.lineNumber = item.lineNumber + 1;
-        variant.categoryId = categoryIdMap[categoryMap[item.Categories]];
-        variant.productName = item.Name;
-        variant.manufacturer = item.Manufacturer;
-        variant.shortDescription = strip(item.Summary);
-        variant.longDescription = strip(item.Description);
-        variant.sku = item.Sku;
-        variant.costPrice = item.Price;
-        variant.weight = item.Weight;
+        variant.categoryId = categoryIdMap[categoryMap[item.categories]];
+        variant.productName = item.name;
+        variant.manufacturer = item.manufacturer;
+        variant.shortDescription = strip(item.short_description);
+        variant.longDescription = strip(item.long_description);
+        variant.sku = item.store_sku;
+        variant.manufacturerSku = item.manufacturer_sku;
+        variant.supplierSku = item.supplier_sku;
+        variant.serialNo = item.serial_number;
+        variant.costPrice = item.cost_price;
+        variant.manufacturerPrice = item.manufacturer_price;
+        variant.weight = item.weight;
         variant.varianceValue = varianceMap[(item.option + "").toLowerCase()] ? item.option : null;
         variant.variance = varianceMap[(item.option + "").toLowerCase()];
         variant.images = [];
-        if (item.ImageUrl) {
+        if (item.image_url) {
             variant.images.push({
-                imageType: utils.getResourceExtension(item.ImageUrl),
-                imagePath: item.ImageUrl,
-                imageName: utils.getResourceName(item.ImageUrl),
+                imageType: utils.getResourceExtension(item.image_url),
+                imagePath: item.image_url,
+                imageName: utils.getResourceName(item.image_url),
                 imageSize: 0
             });
         }
-        if (item.Sub_ImageUrl) {
+        if (item.sub_image_url) {
             variant.images.push({
-                imageType: utils.getResourceExtension(item.Sub_ImageUrl),
-                imagePath: item.Sub_ImageUrl,
-                imageName: utils.getResourceName(item.Sub_ImageUrl),
+                imageType: utils.getResourceExtension(item.sub_image_url),
+                imagePath: item.sub_image_url,
+                imageName: utils.getResourceName(item.sub_image_url),
                 imageSize: 0
             });
         }
+        variant.quantity = item.quantity;
+        variant.barcode = item.barcode;
         //properties below are hard coded since they are not provided in the dropshipper's file
-        variant.quantity = 0;
-        variant.barcode = null;
         variant.format = "";
         variant.isDisplayed = true;
         variant.teaIdAtSource = 0;
         variant.metaTitle = null;
         variant.metaDescription = null;
         variant.metaKeyword = null;
-        variant.serialNo = null;
         variant.statusOnly = "0";
         return variant;
     } // end createVariant method

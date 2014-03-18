@@ -16,9 +16,23 @@ module.exports = [
     varianceMapping: "config/variance-mapping.csv",
     categoryMapping: "config/category-mapping.csv",
     productHeaders:  [
-                        "Name", "Price", "Weight", "Manufacturer",
-                        "Sku", "Summary", "Description", "Categories",
-                        "ImageUrl", "Sub_ImageUrl", "option"
+                        "name",
+                        "barcode",
+                        "cost_price",
+                        "manufacturer_price",
+                        "weight",
+                        "manufacturer",
+                        "supplier",
+                        "store_sku",
+                        "manufacturer_sku",
+                        "supplier_sku",
+                        "short_description",
+                        "long_description",
+                        "categories",
+                        "image_url",
+                        "sub_image_url",
+                        "option",
+                        "quantity"
                       ]
   }
 ];
