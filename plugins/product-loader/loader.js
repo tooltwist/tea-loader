@@ -12,7 +12,7 @@ module.exports = function setup(options, imports, register) {
     var request = require("request");
     var csv = require("csv");
     var fs = require("fs");
-    var strip = require('strip');
+    var uuid = require('node-uuid');
     // retrieve plugin options
     var batchCount = options.batchCount;
     var variance_mapping_path = options.varianceMapping;
@@ -255,20 +255,20 @@ module.exports = function setup(options, imports, register) {
      *  retrieved from the csv file.
      */
     function createVariant(item) {
-        logger.log("Category Map: " + JSON.stringify(categoryIdMap));
         var variant = {};
         variant.lineNumber = item.lineNumber + 1;
         variant.categoryId = categoryIdMap[categoryMap[item.categories]];
         variant.productName = item.name;
         variant.manufacturer = item.manufacturer;
-        variant.shortDescription = strip(item.short_description);
-        variant.longDescription = strip(item.long_description);
+        variant.shortDescription = item.short_description;
+        variant.longDescription = item.long_description;
         variant.sku = item.store_sku;
         variant.manufacturerSku = item.manufacturer_sku;
         variant.supplierSku = item.supplier_sku;
         variant.serialNo = item.serial_number;
         variant.costPrice = item.cost_price;
-        variant.manufacturerPrice = item.manufacturer_price;
+        variant.salePrice = item.sale_price;
+        variant.manufacturerPrice = item.manufacturer_srp ? item.manufacturer_srp : 0;
         variant.weight = item.weight;
         variant.varianceValue = varianceMap[(item.option + "").toLowerCase()] ? item.option : null;
         variant.variance = varianceMap[(item.option + "").toLowerCase()];
@@ -338,6 +338,11 @@ module.exports = function setup(options, imports, register) {
         }
         if(!itemVariant.images || itemVariant.images.length < 1){
             logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have any images.");
+        }
+        if(!itemVariant.serialNo){
+            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have a serial number.  Generating serial...");
+            itemVariant.serialNo = uuid.v4().toUpperCase();
+            logger.warn("Generated serial: " + itemVariant.serialNo);
         }
         callback(errorFound);
     }

@@ -21,7 +21,7 @@ module.exports = function setup(options, imports, register) {
                     if(response && response.error){
                         logger.bomb(response.error);
                     }
-                    logger.log(fn.name + " response: " + JSON.stringify(response));
+                    //logger.log(fn.name + " response: " + JSON.stringify(response));
                     next();
                 });
             } else {

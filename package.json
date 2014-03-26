@@ -8,6 +8,7 @@
     "request": "*",
     "strip": "*",
     "log4js": "*",
-    "architect": "*"
+    "architect": "*",
+    "node-uuid": "*"
   }
 }
