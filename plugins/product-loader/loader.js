@@ -261,7 +261,7 @@ module.exports = function setup(options, imports, register) {
         variant.productName = item.name;
         variant.manufacturer = item.manufacturer;
         variant.shortDescription = item.short_description;
-        variant.longDescription = item.long_description;
+        variant.longDescription = encodeURIComponent(item.long_description);
         variant.sku = item.store_sku;
         variant.manufacturerSku = item.manufacturer_sku;
         variant.supplierSku = item.supplier_sku;
@@ -307,18 +307,18 @@ module.exports = function setup(options, imports, register) {
      */
     function insertVariant(productList, itemVariant) {
         utils.findInList(productList, "name", itemVariant.productName, function(productIndex) {
-            if (productIndex != -1) { // item product was found
-                productList[productIndex].variants.push(itemVariant);
-            } else { // add a new product under this category
-                validateVariant(itemVariant, function(err) {
-                    if (!err) {
+            validateVariant(itemVariant, function(err) {
+                if (!err) {
+                    if (productIndex != -1) { // item product was found
+                        productList[productIndex].variants.push(itemVariant);
+                    } else { // add a new product under this category
                         productList.push({
                             name: itemVariant.productName,
                             variants: [itemVariant]
                         });
                     }
-                });
-            }
+                }
+            });
         });
     } // end insertVariant method
     function validateVariant(itemVariant, callback){
@@ -341,9 +341,18 @@ module.exports = function setup(options, imports, register) {
         }
         if(!itemVariant.serialNo){
             logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have a serial number.  Generating serial...");
-            itemVariant.serialNo = uuid.v4().toUpperCase();
+            itemVariant.serialNo = '1111';
             logger.warn("Generated serial: " + itemVariant.serialNo);
         }
+        if(!itemVariant.quantity){
+            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " has no quantity.  Setting quantity to 10...");
+            itemVariant.quantity = 10;
+        }
+        if(!itemVariant.salePrice){
+            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " has no sale price.  Item will be saved but not displayed.");
+            itemVariant.isDisplayed = false;
+        }
+
         callback(errorFound);
     }
     register(null, {
