@@ -327,6 +327,10 @@ module.exports = function setup(options, imports, register) {
             logger.error("Line No. " + itemVariant.lineNumber + " Item : " + itemVariant.productName + " will not be uploaded since it does not have a category.");
             errorFound = true;
         }
+        if(!itemVariant.sku){
+            logger.error("Line No. " + itemVariant.lineNumber + " Item : " + itemVariant.productName + " will not be uploaded since it does not have an SKU.");
+            errorFound = true;
+        }
         if(!itemVariant.shortDescription){
             logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " does not have a short description.");
         }
