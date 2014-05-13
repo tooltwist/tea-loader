@@ -32,7 +32,7 @@ module.exports = function setup(options, imports, register) {
             validate,
             initializeCategoryMapping,
             initializeVarianceMapping,
-            initializeCategoryIdMapping,
+            //initializeCategoryIdMapping,
             parseDetails,
             persist
         ];
@@ -92,7 +92,7 @@ module.exports = function setup(options, imports, register) {
         csv().from.stream(stream, {
             columns: true
         }).on('record', function(category) {
-            categories[category.from] = category.to;
+            categories[category.from] = category.category_id;
         }).on('end', function(count) {
             logger.report("Done reading csv file with " + categories.length + " categories.");
             categoryMap = categories;
@@ -257,7 +257,7 @@ module.exports = function setup(options, imports, register) {
     function createVariant(item) {
         var variant = {};
         variant.lineNumber = item.lineNumber + 1;
-        variant.categoryId = categoryIdMap[categoryMap[item.categories]];
+        variant.categoryId = categoryMap[item.categories];
         variant.productName = item.name;
         variant.manufacturer = item.manufacturer;
         variant.shortDescription = item.short_description;
