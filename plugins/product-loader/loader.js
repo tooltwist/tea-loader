@@ -19,7 +19,7 @@ module.exports = function setup(options, imports, register) {
     var category_mapping_path = options.categoryMapping;
     var productHeaders = options.productHeaders;
     // collections
-    vhoryMap = [];
+    var categoryMap = {};
     var categoryIdMap = [];
     var varianceMap = [];
     var products = [];
@@ -29,9 +29,9 @@ module.exports = function setup(options, imports, register) {
     function load(settings) {
         // the following functions will be executed synchronously
         functions = [
-            validate,
+            // validate,
             initializeCategoryMapping,
-            initializeVarianceMapping,
+            //initializeVarianceMapping,
             //initializeCategoryIdMapping,
             parseDetails,
             persist
@@ -88,13 +88,14 @@ module.exports = function setup(options, imports, register) {
         stream.on('error', function(error) {
             logger.bomb('CSV file error.');
         });
-        var categories = [];
+        var categories = {};
         csv().from.stream(stream, {
             columns: true
         }).on('record', function(category) {
-            categories[category.from] = category.category_id;
+            var key = category.parent_category.split(' ').join('_') + category.category1.split(' ').join('_') + category.category2.split(' ').join('_');
+            categories[key] = category.category_id;
         }).on('end', function(count) {
-            logger.report("Done reading csv file with " + categories.length + " categories.");
+            logger.report("Done reading csv file with " + count + " categories.");
             categoryMap = categories;
             callback();
         }).on('error', function(err) {
@@ -255,9 +256,23 @@ module.exports = function setup(options, imports, register) {
      *  retrieved from the csv file.
      */
     function createVariant(item) {
+
         var variant = {};
+
+        for(var key in item){
+            if(productHeaders.indexOf(key) === -1){
+                if(!variant.variance){
+                    variant.variance = {};
+                }
+                if(item[key]){
+                    variant.variance[key] = item[key];
+                }
+            }
+        }
+        
         variant.lineNumber = item.lineNumber + 1;
-        variant.categoryId = categoryMap[item.categories];
+        variant.base = item.base;
+        variant.categoryId = categoryMap[item["product parent"].split(' ').join('_') + item["category 1"].split(' ').join('_') + item["category 2"].split(' ').join('_')];
         variant.productName = item.name;
         variant.manufacturer = item.manufacturer;
         variant.shortDescription = item.short_description;
@@ -270,8 +285,8 @@ module.exports = function setup(options, imports, register) {
         variant.salePrice = item.sale_price;
         variant.manufacturerPrice = item.manufacturer_srp ? item.manufacturer_srp : 0;
         variant.weight = item.weight;
-        variant.varianceValue = varianceMap[(item.option + "").toLowerCase()] ? item.option : null;
-        variant.variance = varianceMap[(item.option + "").toLowerCase()];
+        //variant.varianceValue = "";//varianceMap[(item.option + "").toLowerCase()] ? item.option : null;
+        //variant.variance = "";//varianceMap[(item.option + "").toLowerCase()];
         variant.images = [];
         if (item.image_url) {
             variant.images.push({
@@ -291,12 +306,12 @@ module.exports = function setup(options, imports, register) {
         }
         variant.quantity = item.quantity;
         variant.barcode = item.barcode;
+        variant.metaTitle = item.meta_title;
+        variant.metaDescription = item.meta_desc;
         //properties below are hard coded since they are not provided in the dropshipper's file
         variant.format = "";
         variant.isDisplayed = true;
         variant.teaIdAtSource = 0;
-        variant.metaTitle = null;
-        variant.metaDescription = null;
         variant.metaKeyword = null;
         variant.statusOnly = "0";
         return variant;
@@ -306,14 +321,14 @@ module.exports = function setup(options, imports, register) {
      *  persist stage.
      */
     function insertVariant(productList, itemVariant) {
-        utils.findInList(productList, "name", itemVariant.productName, function(productIndex) {
+        utils.findInList(productList, "name", itemVariant.base, function(productIndex) {
             validateVariant(itemVariant, function(err) {
                 if (!err) {
                     if (productIndex != -1) { // item product was found
                         productList[productIndex].variants.push(itemVariant);
                     } else { // add a new product under this category
                         productList.push({
-                            name: itemVariant.productName,
+                            name: itemVariant.base,
                             variants: [itemVariant]
                         });
                     }

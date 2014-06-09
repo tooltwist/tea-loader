@@ -16,6 +16,11 @@ module.exports = [
     varianceMapping: "config/variance-mapping.csv",
     categoryMapping: "config/category-mapping.csv",
     productHeaders:  [
+                        "base",
+                        "lineNumber",
+                        "product parent",
+                        "category 1",
+                        "category 2",
                         "name",
                         "barcode",
                         "cost_price",
@@ -32,7 +37,8 @@ module.exports = [
                         "categories",
                         "image_url",
                         "sub_image_url",
-                        "option",
+                        "meta_title",
+                        "meta_desc",
                         "quantity"
                       ]
   }

@@ -1,165 +1,35 @@
-from,to,category_id
-"Audio,Headphone",Headphone,388
-"Audio,Headphone,Beats. by dr.dre.",Beats by Dre,388
-"Audio,Headphone,Beyerdynamic",Headphone,388
-"Audio,Headphone,Bose",Headphone,388
-"Audio,Headphone,Denon",Headphone,388
-"Audio,Headphone,ETYMOTIC",Headphone,388
-"Audio,Headphone,Marley",Headphone,388
-"Audio,Headphone,Philips",Headphone,388
-"Audio,Headphone,Sennheiser",Headphone,388
-"Audio,Headphone,Shure",Headphone,388
-"Audio,Headphone,Sony",Headphone,388
-"Audio,Headphone,Westone",Headphone,388
-"Audio,Speaker",Speaker,536
-"Batteries & Battery Chargers,For Canon",Batteries and Chargers,334
-"Batteries & Battery Chargers,For Nikon",Batteries and Chargers,334
-"Batteries & Battery Chargers,For Olympus",Batteries and Chargers,334
-"Batteries & Battery Chargers,For Panasonic",Batteries and Chargers,334
-"Batteries & Battery Chargers,For Sony",Batteries and Chargers,334
-"Batteries & Battery Chargers,Maximal Power Batteries and Chargers",Batteries and Chargers,334
-"Batteries & Battery Chargers,Mobile USB Power",Batteries and Chargers,334
-"Battery Grips,For Canon",Battery Grips,341
-"Battery Grips,For Nikon",Battery Grips,341
-"Battery Grips,For Pentax",Battery Grips,341
-"Battery Grips,For Sony",Battery Grips,341
-Camera Bags & Cases,Camera Bags and Cases,320
-"Camera Bags & Cases,DiCAPac",Camera Bags and Cases,320
-"Camera Bags & Cases,Generic",Camera Bags and Cases,320
-"Camera Bags & Cases,Lowepro",Camera Bags and Cases,320
-"Camera Bags & Cases,Olympus",Camera Bags and Cases,320
-"Camera Bags & Cases,SeaShell",Camera Bags and Cases,320
-Cameras Accessories,Camera Accessories,320
-"Cameras Accessories,Camera Hand Straps",Camera Accessories,320
-"Cameras Accessories,Camera Protector",Camera Accessories,320
-"Cameras Accessories,Canon Remote Cords and Controls",Camera Accessories,320
-"Cameras Accessories,Cleaning accessories",Camera Accessories,320
-"Cameras Accessories,Datacolor",Camera Accessories,320
-"Cameras Accessories,GoPro Accessories",Camera Accessories,320
-"Cameras Accessories,GPS/WiFi Units",Camera Accessories,320
-"Cameras Accessories,Instant Photo Paper",Camera Accessories,320
-"Cameras Accessories,Nikon Remote Cords and Controls",Camera Accessories,320
-"Cameras Accessories,Remote Cords and Controls",Camera Accessories,320
-Canon,DSLR,458
-"Canon""",DSLR,458
-"Compact Digital Camera Dropship,Canon",Digital Cameras,454
-"Compact Digital Camera Dropship,FujiFilm",Digital Cameras,383
-"Compact Digital Camera Dropship,GoPro",Digital Cameras,193
-"Compact Digital Camera Dropship,Olympus",Digital Cameras,455
-"Compact Digital Camera Dropship,Panasonic",Digital Cameras,456
-"Compact Digital Camera Dropship,Samsung",Digital Cameras,396
-"Compact Digital Camera Dropship,Sony",Digital Cameras,457
-"Computer,External Storage",External Storage,542
-Digital SLR Dropship,DSLR,193
-"Digital SLR Dropship,Canon",DSLR,458
-"Digital SLR Dropship,Nikon",DSLR,459
-"Digital SLR Dropship,Panasonic",DSLR,393
-"Digital SLR Dropship,Pentax",DSLR,460
-"Digital SLR Dropship,Samsung",DSLR,396
-"Digital SLR Dropship,Sony",DSLR,461
-Digital Video Cameras & Camcorders,Digital Camcorders,193
-"Digital Video Cameras & Camcorders,Panasonic",Digital Camcorders,462
-"Digital Video Cameras & Camcorders,SANYO",Digital Camcorders,193
-"Digital Video Cameras & Camcorders,Sony",Digital Camcorders,464
-"Extended Warranty,Mack Camera and Video Service Warranty",Camera and Video Warranty,371
-Eye-Fi SD Memory Card,Memory Card,196
-"Flash Accessories,Extension Cord / Shose,Canon Flash Cords",Canon Flash Cords,317
-"Flash Accessories,Extension Cord / Shose,Nikon Flash Cords",Flash Accessories,317
-"Flash Accessories,Flash wireless Remote",Flash wireless Remote,577
-"Flash Accessories,Generic Flash Diffusers",Generic Flash Diffusers,317
-"Flashes,Canon",Flashes,425
-"Flashes,Metz",Flashes,193
-"Flashes,Nikon",Flashes,431
-"Flashes,Nissin",Flashes,193
-"Flashes,Olympus",Flashes,433
-"Flashes,Panasonic",Flashes,437
-"Flashes,Sigma",Flashes,441
-"Flashes,Sony",Flashes,446
-FujiFilm,Digital Cameras,310
-Gadget,,195
-Gaming,,195
-"Gaming,Game Consloes,Sony PlayStation 3",Sony Playstation 3,195
-HTC,Android,208
-Laptops,Laptops,192
-"Laptops,Apple",MacBook,279
-"Lens Adapter,For Canon",Lens Adapter,436
-"Lens Adapter,For Olympus",Lens Adapter,436
-"Lens Filters,CPL Filters",CPL Filters,451
-"Lens Filters,Marumi Filters",Marumi Filters,451
-"Lens Filters,UV Filters",UV FIlters,451
-"Lenses Accessories,Canon Lens Hoods",Canon Lens Hoods,587
-"Lenses Accessories,Generic Lens Caps",Generic Lens Cap,573
-"Lenses Accessories,Lens Hoods",Lens Hoods,587
-"Lenses Accessories,Marumi Lens Hoods",Lens Hoods,587
-"Lenses,Canon",Lenses,405
-"Lenses,Fujifilm",Lenses,408
-"Lenses,Kenko",Lenses,410
-"Lenses,Nikon",Lenses,411
-"Lenses,Olympus",Lenses,413
-"Lenses,Panasonic",Lenses,414
-"Lenses,Pentax",Lenses,415
-"Lenses,Samyang",Lenses,417
-"Lenses,Sigma",Lenses,419
-"Lenses,Sony",Lenses,421
-"Lenses,Tamron",Lenses,422
-"Lenses,Tokina",Lenses,424
-"Lenses,ZEISS",Lenses,193
-Light Meters,Camera Accessories,320
-Marumi,Marumi Filters,625
-Maximal Power,Batteries and Chargers,334
-"Memory Card,Card Readers",Card Readers,196
-"Memory Card,Compact Flash",Compact Flash,196
-"Memory Card,Lexar",Memory Card,196
-"Memory Card,Memory Stick",Memory Card,196
-"Memory Card,Micro SD",MicroSD,196
-"Memory Card,SD / SDHC",SD / SDHC,196
-"Memory Card,USB Flash drive",USB Flash Drive,196
-"Memory Card,Wifi Storage",Storage,196
-Mobile Accessories,Mobile Phone Accessories,314
-"Mobile Accessories,Android Case",Android Case,349
-"Mobile Accessories,Bluetooth Headset",Bluetooth Headset,314
-"Mobile Accessories,Other",Mobile Phone Accessories,314
-"Mobile Accessories,Screen Protector",Screen Protector,492
-Mobile Phones,Android,190
-"Mobile Phones,Apple",iPhone 5,197
-"Mobile Phones,BlackBerry",,207
-"Mobile Phones,HTC",Android,208
-"Mobile Phones,Huawei",Android,209
-"Mobile Phones,LG",Android,210
-"Mobile Phones,Nokia",Android,212
-"Mobile Phones,Samsung",Android,213
-"Mobile Phones,Sony",Android,214
-"Mobile Phones,Sony Ericsson",Android,214
-Nikon,Digital Cameras,387
-Olympus,Digital Cameras,392
-Panasonic,Digital Cameras,393
-Pentax,Digital Cameras,358
-Portable Media Player,Portable Media Player,193
-"Professional Voice Recorder,Sony",Voice Recorder,306
-"Prosumer & Mirrorless Cameras,Canon",Prosumers & Mirrorless Camera,379
-"Prosumer & Mirrorless Cameras,Fujifilm",Prosumers & Mirrorless Camera,383
-"Prosumer & Mirrorless Cameras,Nikon",Prosumers & Mirrorless Camera,387
-"Prosumer & Mirrorless Cameras,Olympus",Prosumers & Mirrorless Camera,392
-"Prosumer & Mirrorless Cameras,Panasonic",Prosumers & Mirrorless Camera,393
-"Prosumer & Mirrorless Cameras,Pentax",Prosumers & Mirrorless Camera,395
-"Prosumer & Mirrorless Cameras,Samsung",Prosumers & Mirrorless Camera,470
-"Prosumer & Mirrorless Cameras,Sony",Prosumers & Mirrorless Camera,471
-Samsung,Android,213
-SanDisk Memory Cards,SanDisk Memory Cards,196
-Sigma,Lenses,419
-Sony,Digital Cameras,457
-Tablets,Android,191
-"Tablets,Acer",Android,191
-"Tablets,Apple",New iPad,256
-"Tablets,ASUS",Android,257
-"Tablets,Kindle (Amazon)",Kindle,191
-"Tablets,Lenovo",Android,259
-"Tablets,Samsung",Android,262
-"Tripods / Supports,Monopods",Minipods,559
-"Tripods / Supports,Tripods",Tripods,559
-AF Lens,Lenses,193
-Galaxy Note 2,Android,223
-Galaxy S3,Android,220
-LG Nexus 4,Android,238
-iPod Shuffle,Portable Media Player,301
-iPad Mini,iPad Mini,297
+parent_category,category1,category2,category_id
+Media Player,Apple,iPod Shuffle,301
+Media Player,Apple,iPod Nano,302
+Media Player,Apple,iPod Classic,300
+Media Player,Apple,iPod Touch,303
+Tablets,Apple,iPad Retina Display,266
+Tablets,Apple,iPad Mini,264
+Tablets,Apple,iPad Mini Retina,265
+Tablets,Apple,iPad Air,267
+Moblie Phones,Apple,IPHONE4S,216
+Moblie Phones,Apple,IPHONE5C,219
+Moblie Phones,Apple,IPHONE5S,218
+Laptops,Apple,iMac,286
+Laptops,Apple,Mac Mini,287
+Laptops,Apple,MacBook Air,291
+Laptops,Apple,MacBook Pro,289
+Laptops,Apple,Display,285
+Laptops,Apple,Apple TV,283
+Accessories,Laptops Accessories,Cable,344
+Accessories,Laptops Accessories,Keyboard,403
+Accessories,Laptops Accessories,Mouse,478
+Accessories,Laptops Accessories,Router,505
+Accessories,Laptops Accessories,Adapter,423
+Accessories,Laptops Accessories,Remote,576
+Accessories,Laptops Accessories,External Storage,542
+Accessories,Laptops Accessories,Batteries & Battery Chargers,330
+Accessories,Tablets Accessories,Keyboard,399
+Accessories,Tablets Accessories,Adapter,420
+Accessories,Tablets Accessories,Case,350
+Accessories,Mobile Accessories,Adapter,418
+Accessories,Mobile Accessories,Cable,342
+Accessories,Mobile Accessories,Case,349
+Accessories,Mobile Accessories,Adapter,418
+Accessories,Media Player Accessories,Adapter,432
+Accessories,Media Player Accessories,Headphone,388
