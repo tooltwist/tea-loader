@@ -197,7 +197,11 @@ module.exports = function setup(options, imports, register) {
             var remaining = products.length % batchCount;
             logger.report("Pass 3: Upload to TEA");
             logger.log("Uploading products, please wait...");
-            logger.log("Will be uploading " + batches + " batches of " + batchCount + " and a remainder of " + remaining + " for a total of " + products.length + ".");
+            if(products.length > batchCount) {
+                logger.log("Will be uploading " + batches + " batches of " + batchCount + " and a remainder of " + remaining + " for a total of " + products.length + ".");
+            } else {
+                logger.log("Will be uploading a total of " + products.length + " products.");
+            }
 
             function callNextBatch(i) {
                 logger.report("Loading batch: " + i);
@@ -210,7 +214,7 @@ module.exports = function setup(options, imports, register) {
                     if (i < batches) {
                         callNextBatch(i + 1);
                     } else {
-                        if(remaining > 0){
+                        if(products.length > batchCount && remaining > 0){
                             logger.report("Loading last batch.");
                             persistBatch(settings, products.slice((-1) * remaining), function(result) {
                                 if (result === undefined || result.response !== 'Success') {
