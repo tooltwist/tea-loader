@@ -235,6 +235,9 @@ module.exports = function setup(options, imports, register) {
             logger.report("No products to upload.");
         }
     } // end persist method
+    /**
+     *  Saves the batch of products into the database using webservices.
+     */
     function persistBatch(settings, products, callback) {
         var url = 'http://' + settings.host + '/loadProducts';
         var json = {
@@ -263,13 +266,17 @@ module.exports = function setup(options, imports, register) {
 
         var variant = {};
 
-        for(var key in item){
-            if(productHeaders.indexOf(key) === -1){
+        for(var key in item){ //iterates over all item properties
+            if(productHeaders.indexOf(key) === -1){  //item property is not in the list of headers, then it must be a variant type
                 if(!variant.variance){
                     variant.variance = {};
                 }
-                if(item[key]){
-                    variant.variance[key] = item[key];
+                var varianceTypeValue = item[key];
+                if(varianceTypeValue){
+                    if(typeof varianceTypeValue === 'string' || varianceTypeValue instanceof String){
+                        varianceTypeValue = varianceTypeValue.toUpperCase();
+                    }
+                    variant.variance[key] = varianceTypeValue;
                 }
             }
         }
