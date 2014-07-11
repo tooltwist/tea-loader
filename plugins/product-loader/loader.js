@@ -372,8 +372,15 @@ module.exports = function setup(options, imports, register) {
             itemVariant.quantity = 10;
         }
         if(!itemVariant.salePrice){
-            logger.warn("Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " has no sale price.  Item will be saved but not displayed.");
-            itemVariant.isDisplayed = false;
+            var warningText = "Line No." + itemVariant.lineNumber + " Item : " + itemVariant.productName + " has no sale price.";
+            if(!itemVariant.manufacturerPrice){
+                warningText += "  Item will be saved but will be inactive.";
+                itemVariant.isDisplayed = false;
+            } else {
+                warningText += "  Setting sale price to manufacturer price.";
+                itemVariant.salePrice = itemVariant.manufacturerPrice;
+            }
+            logger.warn(warningText);
         }
 
         callback(errorFound);
