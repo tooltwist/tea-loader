@@ -198,7 +198,10 @@ module.exports = function setup(options, imports, register) {
             logger.report("Pass 3: Upload to TEA");
             logger.log("Uploading products, please wait...");
             if(products.length > batchCount) {
-                logger.log("Will be uploading " + batches + " batches of " + batchCount + " and a remainder of " + remaining + " for a total of " + products.length + ".");
+                if(remaining){
+                    batches += batches;
+                }
+                logger.log("Will be uploading a total of " + products.length + " products. Sending out "+ batches + " batches of at least" + batchCount + " products per batch.");
             } else {
                 logger.log("Will be uploading a total of " + products.length + " products.");
             }
