@@ -199,9 +199,9 @@ module.exports = function setup(options, imports, register) {
             logger.log("Uploading products, please wait...");
             if(products.length > batchCount) {
                 if(remaining){
-                    batches += batches;
+                    batches += 1;
                 }
-                logger.log("Will be uploading a total of " + products.length + " products. Sending out "+ batches + " batches of at least" + batchCount + " products per batch.");
+                logger.log("Will be uploading a total of " + products.length + " products. Sending out " + batches + " batches of up to " + batchCount + " products per batch.");
             } else {
                 logger.log("Will be uploading a total of " + products.length + " products.");
             }
@@ -291,6 +291,7 @@ module.exports = function setup(options, imports, register) {
         variant.manufacturer = item.manufacturer;
         variant.shortDescription = item.short_description;
         variant.longDescription = encodeURIComponent(item.long_description);
+        variant.supplier = item.supplier;
         variant.sku = item.store_sku;
         variant.manufacturerSku = item.manufacturer_sku;
         variant.supplierSku = item.supplier_sku;
