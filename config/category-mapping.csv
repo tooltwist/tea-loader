@@ -1,0 +1,357 @@
+parent_category,category1,category2,category3,category_id
+Mobile,,,,190
+Mobile,Apple,,,197
+"Mobile
+",Apple,iPhone 4,,215
+Mobile,Apple,iPhone 4s,,216
+Mobile,Apple,iPhone 5,,217
+Mobile,Apple,iPhone 5s,,218
+Mobile,Apple,iPhone 5c,,219
+Mobile,Asus,,,198
+Mobile,Asus,Fonepad Note 6,,234
+Mobile,Asus,One Touch,,235
+Mobile,BlackBerry,,,206
+Mobile,BlackBerry,BlackBerry Q10,,255
+Mobile,HTC,,,208
+Mobile,HTC,HTC J,,236
+Mobile,HTC,HTC One,,237
+Mobile,Huawei,,,209
+Mobile,Huawei,Huawei Ascend D1,,248
+Mobile,Huawei,Huawei Ascend P6,,249
+Mobile,Huawei,Huawei Ascend G700,,250
+Mobile,LG,,,210
+Mobile,LG,LG Nexus 4,,238
+Mobile,LG,LG Nexus 5,,239
+Mobile,LG,LG G Flex,,240
+Mobile,LG,LG G2,,241
+Mobile,Motorola,,,211
+Mobile,Motorola,Moto G,,242
+Mobile,Nokia,,,212
+Mobile,Nokia,Nokia Lumia 820,,243
+Mobile,Nokia,Nokia 515,,244
+Mobile,Nokia,Nokia Lumia 1520,,245
+Mobile,Nokia,Nokia Lumia 525,,246
+Mobile,Nokia,Nokia Lumia 1320,,247
+Mobile,Samsung,,,213
+Mobile,Samsung,Galaxy S3,,220
+Mobile,Samsung,Galaxy S4,,222
+Mobile,Samsung,Galaxy Note 2,,223
+Mobile,Samsung,Galaxy Note 3,,226
+Mobile,Samsung,Galaxy Mega,,230
+Mobile,Samsung,Galaxy S Advance,,231
+Mobile,Samsung,Galaxy Note 8.0,,232
+Mobile,Samsung,Samsung S Duos,,233
+Mobile,Sony,,,214
+Mobile,Sony,Xperia TX,,251
+Mobile,Sony,Xperia Miro,,252
+Mobile,Sony,Xperia Z1,,253
+Mobile,Sony,Xperia Z Ultra,,254
+Tablets,Apple,,,256
+Tablets,Apple,iPad Mini,,264
+Tablets,Apple,iPad Mini Retina,,265
+Tablets,Apple,iPad Retina Display,,266
+Tablets,Apple,iPad Air,,267
+Tablets,Apple,iPad 2,,633
+Tablets,Apple,iPad 3,,634
+Tablets,Asus,,,257
+Tablets,Asus,VivoTab,,268
+Tablets,Asus,Transformer Pad,,269
+Tablets,Asus,Fonepad,,270
+Tablets,Google,,,258
+Tablets,Google,Google Nexus 7,,271
+Tablets,Lenovo,,,259
+Tablets,Lenovo,Lenovo Yoga,,272
+Tablets,LG,,,260
+Tablets,LG,LG G Pad,,273
+Tablets,Microsoft,,,261
+Tablets,Microsoft,Microsoft Surface Pro,,274
+Tablets,Microsoft,Microsoft Surface 2,,275
+Tablets,Samsung,,,262
+Tablets,Samsung,Galaxy Tab 3 ,,276
+Tablets,Samsung,Google Nexus 10 ,,277
+Tablets,Samsung,Google Nexus 10.1 ,,278
+Computer,,,,192
+Computer,Apple,,,279
+Computer,Apple,Apple TV,,283
+Computer,Apple,MacBook Air,,284
+Computer,Apple,Display,,285
+Computer,Apple,iMac,,286
+Computer,Apple,Mac Mini,,287
+Computer,Apple,MacBook,,288
+Computer,Apple,Mac Pro,,289
+Computer,Apple,MacBook Pro,,290
+Computer,Apple,MacBook Air,,291
+Computer,Asus,,,280
+Computer,Asus,Transofrmer Book,,293
+Computer,Asus,Taichi 21,,291
+Computer,MSI,,,281
+Computer,MSI,MSI i7,,295
+Computer,Samsung,,,282
+Computer,Samsung,Chromebook,,292
+Camera,,,,193
+Camera,Canon,,,308
+Camera,Canon,Camera,,379
+Camera,Canon,Camera,Compact Digital Camera,454
+Camera,Canon,Camera,Digital SLR Cameras,458
+Camera,Canon,Lenses,,405
+Camera,Canon,Lenses,Macrophoto Lens,596
+Camera,Canon,Lenses,Tilt-shift Lens,598
+Camera,Canon,Lenses,Electro Focus Lens,599
+Camera,Canon,Flashes,,425
+Camera,Canon,Flashes,Speedlite Flash,600
+Camera,Canon,Flashes,Speedllite Transmitter,605
+Camera,Carl,,,309
+Camera,Carl,Camera,,380
+Camera,Carl,Lenses,,407
+Camera,Carl,Lenses,Zeiss Distagon Lens,535
+Camera,Carl,Flashes,,427
+Camera,Fujinon,,,310
+Camera,Fujinon,Camera,,383
+Camera,Fujinon,Lenses,,408
+Camera,Fujinon,Lenses,XF Lens,595
+Camera,Fujinon,Flashes,,428
+Camera,Kenko,,,311
+Camera,Kenko,Camera,,385
+Camera,Kenko,Lenses,,410
+Camera,Kenko,Lenses,Extension Tube Lens,619
+Camera,Kenko,Flashes,,429
+Camera,Nikon,,,312
+Camera,Nikon,Camera,,387
+Camera,Nikon,Camera,Digital SLR Cameras,459
+Camera,Nikon,Lenses,,411
+Camera,Nikon,Lenses,Perspective Control Lens,543
+Camera,Nikon,Lenses,Teleconventor Lens,547
+Camera,Nikon,Lenses,AF Lens,557
+Camera,Nikon,Flashes,,431
+Camera,Nikon,Flashes,Speedlite Flash,601
+Camera,Olympus,,,356
+Camera,Olympus,Camera,,392
+Camera,Olympus,Camera,Compact Digital Camera,455
+Camera,Olympus,Lenses,,413
+Camera,Olympus,Lenses,Standard Lens,515
+Camera,Olympus,Lenses,Ultra Zoom Lens,520
+Camera,Olympus,Lenses,Wide Zoom Lens,521
+Camera,Olympus,Lenses,Telephoto Lens,524
+Camera,Olympus,Lenses,Extension Tube Lens,528
+Camera,Olympus,Lenses,Digital Lens,540
+Camera,Olympus,Lenses,Teleconventor Lens,549
+Camera,Olympus,Lenses,Macrophoto Lens,597
+Camera,Olympus,Flashes,,433
+Camera,Olympus,Flashes,Speedlite Flash,602
+Camera,Panasonic,,,357
+Camera,Panasonic,Camera,,393
+Camera,Panasonic,Camera,Compact Digital Camera,456
+Camera,Panasonic,Camera,Digital Video Cameras & Camcorders,462
+Camera,Panasonic,Lenses,,414
+Camera,Panasonic,Lenses,Lumix G Lens,514
+Camera,Panasonic,Flashes,,437
+Camera,Panasonic,Flashes,Speedlite Flash,603
+Camera,Pentax,,,358
+Camera,Pentax,Camera,,395
+Camera,Pentax,Camera,Digital SLR Cameras,460
+Camera,Pentax,Lenses,,415
+Camera,Pentax,Lenses,SMC Lens,513
+Camera,Pentax,Flashes,,438
+Camera,Samsung,,,359
+Camera,Samsung,Camera,,396
+Camera,Samsung,Camera,Action Camera,453
+Camera,Samsung,Camera,Smart Digital Camera,466
+Camera,Samsung,Camera,Prosumer and Mirrorless Camera,470
+Camera,Samsung,Lenses,,416
+Camera,Samsung,Flashes,,440
+Camera,Samyang,,,361
+Camera,Samyang,Camera,,397
+Camera,Samyang,Lenses,,417
+Camera,Samyang,Lenses,Fixed Mount Lens,510
+Camera,Samyang,Lenses,Fish Eye Lens,512
+Camera,Samyang,Lenses,Standard Lens,516
+Camera,Samyang,Flashes,,439
+Camera,Sigma,,,363
+Camera,Sigma,Camera,,398
+Camera,Sigma,Lenses,,419
+Camera,Sigma,Lenses,Macro Lens,506
+Camera,Sigma,Lenses,HSM Lens,509
+Camera,Sigma,Flashes,,441
+Camera,Sigma,Flashes,Macro Flash,607
+Camera,Sony,,,365
+Camera,Sony,Camera,,400
+Camera,Sony,Camera,Compact Digital Camera,457
+Camera,Sony,Camera,Digital SLR Cameras,461
+Camera,Sony,Camera,Digital Video Cameras & Camcorders,464
+Camera,Sony,Camera,Prosumer and Mirrorless Camera,471
+Camera,Sony,Lenses,,421
+Camera,Sony,Lenses,A-mount Lens,498
+Camera,Sony,Lenses,SEL Lens,500
+Camera,Sony,Lenses,CZ Lens,501
+Camera,Sony,Lenses,DT Lens,503
+Camera,Sony,Lenses,Macro Lens,507
+Camera,Sony,Lenses,Standard Lens,517
+Camera,Sony,Lenses,Wide Zoom Lens,522
+Camera,Sony,Lenses,Teleconventor Lens,552
+Camera,Sony,Flashes,,446
+Camera,Sony,Flashes,Speedlite Flash,604
+Camera,Sony,Flashes,Speedlite Transmitter,606
+Camera,Sony,Flashes,External Flash,608
+Camera,Sony,Flashes,HVL Flash,609
+Camera,Tamron,,,367
+Camera,Tamron,Camera,,401
+Camera,Tamron,Lenses,,422
+Camera,Tamron,Lenses,VC Lens,479
+Camera,Tamron,Lenses,SP Lens,484
+Camera,Tamron,Flashes,,442
+Camera,Tokina,,,369
+Camera,Tokina,Camera,,402
+Camera,Tokina,Lenses,,424
+Camera,Tokina,Lenses,PRO DX Lens,473
+Camera,Tokina,Lenses,PRO FX Lens,475
+Camera,Tokina,Flashes,,443
+Audio,,,,194
+Audio,Apple,,,296
+Audio,Apple,Media Player,,297
+Audio,Apple,Media Player,IPod Classic,300
+Audio,Apple,Media Player,iPod Shuffle,301
+Audio,Apple,Media Player,iPod Nano,302
+Audio,Apple,Media Player,iPod Touch,303
+Audio,Sony,,,305
+Audio,Sony,Voice Recorder,,306
+Audio,Sony,Voice Recorder,Portable Audio Recorder  ,307
+Electronics,,,,195
+Electronics,Samsung,,,610
+Electronics,Samsung,Smart watch,,612
+Electronics,Samsung,Smart watch,Galaxy Gear,618
+Electronics,Samsung,Gadget,,614
+Electronics,Sony,,,611
+Electronics,Sony,Smart watch,,613
+Electronics,Sony,Smart watch,Smart watch2,616
+Electronics,Sony,Gadget,,615
+Electronics,Apple,,,637
+Electronics,Apple,Apple TV,,638
+Accessories,,,,196
+Accessories,Mobile Accessories,,,314
+Accessories,Mobile Accessories,Bag,,321
+Accessories,Mobile Accessories,Batteries & Battery Chargers ,,328
+Accessories,Mobile Accessories,Cable,,342
+Accessories,Mobile Accessories,Case,,349
+Accessories,Mobile Accessories,Warranty,,360
+Accessories,Mobile Accessories,Headphone,,381
+Accessories,Mobile Accessories,Adapter,,418
+Accessories,Mobile Accessories,Memory Card,,452
+Accessories,Mobile Accessories,Protective Film,,492
+Accessories,Mobile Accessories,Software,,523
+Accessories,Mobile Accessories,Speaker,,531
+Accessories,Mobile Accessories,External Storage,,539
+Accessories,Tablets Accessories,,,315
+Accessories,Tablets Accessories,Bag,,322
+Accessories,Tablets Accessories,Batteries & Battery Chargers ,,329
+Accessories,Tablets Accessories,Cable,,343
+Accessories,Tablets Accessories,Case,,350
+Accessories,Tablets Accessories,Warranty,,362
+Accessories,Tablets Accessories,Headphone,,382
+Accessories,Tablets Accessories,Keyboard,,399
+Accessories,Tablets Accessories,Adapter,,420
+Accessories,Tablets Accessories,Memory Card,,463
+Accessories,Tablets Accessories,Mouse,,477
+Accessories,Tablets Accessories,Protective Film,,493
+Accessories,Tablets Accessories,Software,,525
+Accessories,Tablets Accessories,Speaker,,532
+Accessories,Tablets Accessories,External Storage,,541
+Accessories,Computer Accessories,,,316
+Accessories,Computer Accessories,Bag,,323
+Accessories,Computer Accessories,Batteries & Battery Chargers ,,330
+Accessories,Computer Accessories,Cable,,344
+Accessories,Computer Accessories,Case,,351
+Accessories,Computer Accessories,Warranty,,364
+Accessories,Computer Accessories,Gaming,,374
+Accessories,Computer Accessories,Headphone,,384
+Accessories,Computer Accessories,Keyboard,,403
+Accessories,Computer Accessories,Adapter,,423
+Accessories,Computer Accessories,Memory Card,,465
+Accessories,Computer Accessories,Mouse,,478
+Accessories,Computer Accessories,Protective Film,,494
+Accessories,Computer Accessories,Router,,505
+Accessories,Computer Accessories,Software,,526
+Accessories,Computer Accessories,Speaker,,533
+Accessories,Computer Accessories,External Storage,,542
+Accessories,Computer Accessories,Remote,,576
+Accessories,Computer Accessories,Displays,,639
+Accessories,Computer Accessories,Displays,Apple,640
+Accessories,Flash Accessories,,,317
+Accessories,Flash Accessories,Bag,,324
+Accessories,Flash Accessories,Batteries & Battery Chargers ,,331
+Accessories,Flash Accessories,Cable,,345
+Accessories,Flash Accessories,Case,,352
+Accessories,Flash Accessories,Warranty,,366
+Accessories,Flash Accessories,Adapter,,426
+Accessories,Flash Accessories,Filters,,448
+Accessories,Flash Accessories,Protective Film,,495
+Accessories,Flash Accessories,Straps,,563
+Accessories,Flash Accessories,Caps,,570
+Accessories,Flash Accessories,Remote,,577
+Accessories,Flash Accessories,Hoods,,584
+Accessories,Audio Accessories,,,318
+Accessories,Audio Accessories,Bag,,325
+Accessories,Audio Accessories,Batteries & Battery Chargers ,,332
+Accessories,Audio Accessories,Cable,,346
+Accessories,Audio Accessories,Case,,353
+Accessories,Audio Accessories,Warranty,,368
+Accessories,Audio Accessories,Gaming,,376
+Accessories,Audio Accessories,Headphone,,388
+Accessories,Audio Accessories,Adapter,,432
+Accessories,Audio Accessories,Memory Card,,468
+Accessories,Audio Accessories,Protective Film,,496
+Accessories,Audio Accessories,Speaker,,536
+Accessories,Audio Accessories,External Storage,,545
+Accessories,Audio Accessories,Remote,,578
+Accessories,Electronics Accessories,,,319
+Accessories,Electronics Accessories,Bag,,326
+Accessories,Electronics Accessories,Batteries & Battery Chargers ,,333
+Accessories,Electronics Accessories,Cable,,347
+Accessories,Electronics Accessories,Case,,354
+Accessories,Electronics Accessories,Warranty,,370
+Accessories,Electronics Accessories,Gaming,,377
+Accessories,Electronics Accessories,Headphone,,389
+Accessories,Electronics Accessories,Keyboard,,406
+Accessories,Electronics Accessories,Adapter,,435
+Accessories,Electronics Accessories,Mouse,,482
+Accessories,Electronics Accessories,Speaker,,537
+Accessories,Electronics Accessories,External Storage,,546
+Accessories,Electronics Accessories,Remote,,579
+Accessories,Camera Accessories,,,320
+Accessories,Camera Accessories,Bag,,327
+Accessories,Camera Accessories,Batteries & Battery Chargers ,,334
+Accessories,Camera Accessories,Battery Grips,,341
+Accessories,Camera Accessories,Cable,,348
+Accessories,Camera Accessories,Case,,355
+Accessories,Camera Accessories,Warranty,,371
+Accessories,Camera Accessories,Adapter,,436
+Accessories,Camera Accessories,Filters,,451
+Accessories,Camera Accessories,Memory Card,,474
+Accessories,Camera Accessories,Pocket Wizard,,491
+Accessories,Camera Accessories,Protective Film,,499
+Accessories,Camera Accessories,Tripods/Support,,559
+Accessories,Camera Accessories,Straps,,566
+Accessories,Camera Accessories,Caps,,573
+Accessories,Camera Accessories,Remote,,380
+Accessories,Camera Accessories,Hoods,,357
+Accessories,Lenses Accessories,,,620
+Accessories,Lenses Accessories,Adapter,,621
+Accessories,Lenses Accessories,Bag,,622
+Accessories,Lenses Accessories,Caps,,623
+Accessories,Lenses Accessories,Case,,624
+Accessories,Lenses Accessories,Filters,,625
+Accessories,Lenses Accessories,Hoods,,626
+Accessories,Lenses Accessories,Warranty,,627
+Storage,,,,629
+Storage,External Storage,,,635
+Storage,Card Readers,,,641
+Storage,USB Flash Drives,,,642
+Storage,Flash Memory ,,,643
+Storage,Flash Memory ,SD / SDHC,,644
+Storage,Flash Memory ,MicroSD ,,645
+Storage,Flash Memory ,Compact Flash ,,646
+Storage,Flash Memory ,SanDisk Memory Cards ,,647
+Storage,Flash Memory ,Compact Flash,,648
+Printers,,,,630
+Printers,HP,,,636
+Software,,,,631
+Warranty,,,,632
