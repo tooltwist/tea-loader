@@ -92,7 +92,7 @@ module.exports = function setup(options, imports, register) {
         csv().from.stream(stream, {
             columns: true
         }).on('record', function(category) {
-            var key = category.parent_category.split(' ').join('_') + category.category1.split(' ').join('_') + category.category2.split(' ').join('_');
+            var key = category.parent_category.split(' ').join('_') + category.category1.split(' ').join('_') + category.category2.split(' ').join('_') + category.category3.split(' ').join('_');
             categories[key] = category.category_id;
         }).on('end', function(count) {
             logger.report("Done reading csv file with " + count + " categories.");
@@ -286,7 +286,7 @@ module.exports = function setup(options, imports, register) {
         
         variant.lineNumber = item.lineNumber + 1;
         variant.base = item.base;
-        variant.categoryId = categoryMap[item["product parent"].split(' ').join('_') + item["category 1"].split(' ').join('_') + item["category 2"].split(' ').join('_')];
+        variant.categoryId = categoryMap[item["product parent"].split(' ').join('_') + item["category 1"].split(' ').join('_') + item["category 2"].split(' ').join('_') + item["category 3"].split(' ').join('_')];
         variant.productName = item.name;
         variant.manufacturer = item.manufacturer;
         variant.shortDescription = item.short_description;

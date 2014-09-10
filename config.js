@@ -21,6 +21,7 @@ module.exports = [
                         "product parent",
                         "category 1",
                         "category 2",
+                        "category 3",
                         "name",
                         "barcode",
                         "cost_price",
