@@ -9,7 +9,7 @@ Mobile,Apple,iPhone 5c,,219
 Mobile,Asus,,,198
 Mobile,Asus,Fonepad Note 6,,234
 Mobile,Asus,One Touch,,235
-Mobile,BlackBerry,,,206
+Mobile,BlackBerry,,,207
 Mobile,BlackBerry,BlackBerry Q10,,255
 Mobile,HTC,,,208
 Mobile,HTC,HTC J,,236
@@ -45,6 +45,7 @@ Mobile,Sony,Xperia TX,,251
 Mobile,Sony,Xperia Miro,,252
 Mobile,Sony,Xperia Z1,,253
 Mobile,Sony,Xperia Z Ultra,,254
+Tablets,,,,191
 Tablets,Apple,,,256
 Tablets,Apple,iPad Mini,,264
 Tablets,Apple,iPad Mini Retina,,265
@@ -82,7 +83,7 @@ Computer,Apple,MacBook Pro,,290
 Computer,Apple,MacBook Air,,291
 Computer,Asus,,,280
 Computer,Asus,Transofrmer Book,,293
-Computer,Asus,Taichi 21,,291
+Computer,Asus,Taichi 21,,294
 Computer,MSI,,,281
 Computer,MSI,MSI i7,,295
 Computer,Samsung,,,282
@@ -225,17 +226,24 @@ Electronics,Sony,Smart watch,Smart watch2,616
 Electronics,Sony,Gadget,,615
 Electronics,Apple,,,637
 Electronics,Apple,Apple TV,,638
+Electronics,Pebble,,,652
+Electronics,,Smart Watch,,653
 Accessories,,,,196
 Accessories,Mobile Accessories,,,314
 Accessories,Mobile Accessories,Bag,,321
 Accessories,Mobile Accessories,Batteries & Battery Chargers ,,328
 Accessories,Mobile Accessories,Cable,,342
+Accessories,Mobile Accessories,Cable,iPhone,673
 Accessories,Mobile Accessories,Case,,349
+Accessories,Mobile Accessories,Case,iPhone,674
 Accessories,Mobile Accessories,Warranty,,360
 Accessories,Mobile Accessories,Headphone,,381
+Accessories,Mobile Accessories,Headphone,iPhone,675
 Accessories,Mobile Accessories,Adapter,,418
+Accessories,Mobile Accessories,Adapter,iPhone,676
 Accessories,Mobile Accessories,Memory Card,,452
 Accessories,Mobile Accessories,Protective Film,,492
+Accessories,Mobile Accessories,Protective Film,iPhone,677
 Accessories,Mobile Accessories,Software,,523
 Accessories,Mobile Accessories,Speaker,,531
 Accessories,Mobile Accessories,External Storage,,539
@@ -243,36 +251,52 @@ Accessories,Tablets Accessories,,,315
 Accessories,Tablets Accessories,Bag,,322
 Accessories,Tablets Accessories,Batteries & Battery Chargers ,,329
 Accessories,Tablets Accessories,Cable,,343
+Accessories,Tablets Accessories,Cable,iPad,678
 Accessories,Tablets Accessories,Case,,350
+Accessories,Tablets Accessories,Case,iPad,679
 Accessories,Tablets Accessories,Warranty,,362
 Accessories,Tablets Accessories,Headphone,,382
+Accessories,Tablets Accessories,Headphone,iPad,680
 Accessories,Tablets Accessories,Keyboard,,399
+Accessories,Tablets Accessories,Keyboard,iPad,681
 Accessories,Tablets Accessories,Adapter,,420
+Accessories,Tablets Accessories,Adapter,iPad,682
 Accessories,Tablets Accessories,Memory Card,,463
 Accessories,Tablets Accessories,Mouse,,477
 Accessories,Tablets Accessories,Protective Film,,493
+Accessories,Tablets Accessories,Protective Film,iPad,683
 Accessories,Tablets Accessories,Software,,525
 Accessories,Tablets Accessories,Speaker,,532
 Accessories,Tablets Accessories,External Storage,,541
 Accessories,Computer Accessories,,,316
 Accessories,Computer Accessories,Bag,,323
+Accessories,Computer Accessories,Bag,Mac,
 Accessories,Computer Accessories,Batteries & Battery Chargers ,,330
+Accessories,Computer Accessories,Batteries & Battery Chargers ,Mac,665
 Accessories,Computer Accessories,Cable,,344
+Accessories,Computer Accessories,Cable,Mac,666
 Accessories,Computer Accessories,Case,,351
+Accessories,Computer Accessories,Case,Mac,667
 Accessories,Computer Accessories,Warranty,,364
 Accessories,Computer Accessories,Gaming,,374
 Accessories,Computer Accessories,Headphone,,384
 Accessories,Computer Accessories,Keyboard,,403
+Accessories,Computer Accessories,Keyboard,Mac,668
 Accessories,Computer Accessories,Adapter,,423
+Accessories,Computer Accessories,Adapter,Mac,669
 Accessories,Computer Accessories,Memory Card,,465
 Accessories,Computer Accessories,Mouse,,478
+Accessories,Computer Accessories,Mouse,Mac,670
 Accessories,Computer Accessories,Protective Film,,494
 Accessories,Computer Accessories,Router,,505
+Accessories,Computer Accessories,Router,Mac,671
 Accessories,Computer Accessories,Software,,526
 Accessories,Computer Accessories,Speaker,,533
 Accessories,Computer Accessories,External Storage,,542
 Accessories,Computer Accessories,Remote,,576
+Accessories,Computer Accessories,Remote,Mac,672
 Accessories,Computer Accessories,Displays,,639
+Accessories,Computer Accessories,Displays,Apple,640
 Accessories,Computer Accessories,Displays,Apple,640
 Accessories,Flash Accessories,,,317
 Accessories,Flash Accessories,Bag,,324
@@ -291,14 +315,23 @@ Accessories,Audio Accessories,,,318
 Accessories,Audio Accessories,Bag,,325
 Accessories,Audio Accessories,Batteries & Battery Chargers ,,332
 Accessories,Audio Accessories,Cable,,346
+Accessories,Audio Accessories,Cable,iPod,657
 Accessories,Audio Accessories,Case,,353
+Accessories,Audio Accessories,Case,iPod,658
 Accessories,Audio Accessories,Warranty,,368
 Accessories,Audio Accessories,Gaming,,376
+Accessories,Audio Accessories,Gaming,iPod,659
 Accessories,Audio Accessories,Headphone,,388
+Accessories,Audio Accessories,Headphone,iPod,660
 Accessories,Audio Accessories,Adapter,,432
+Accessories,Audio Accessories,Adapter,iPod,654
+Accessories,Audio Accessories,Adapter,Other Brands 1,655
+Accessories,Audio Accessories,Adapter,Other Brands 2,656
 Accessories,Audio Accessories,Memory Card,,468
 Accessories,Audio Accessories,Protective Film,,496
+Accessories,Audio Accessories,Protective Film,iPod,661
 Accessories,Audio Accessories,Speaker,,536
+Accessories,Audio Accessories,Speaker,iPod,662
 Accessories,Audio Accessories,External Storage,,545
 Accessories,Audio Accessories,Remote,,578
 Accessories,Electronics Accessories,,,319
@@ -330,8 +363,8 @@ Accessories,Camera Accessories,Protective Film,,499
 Accessories,Camera Accessories,Tripods/Support,,559
 Accessories,Camera Accessories,Straps,,566
 Accessories,Camera Accessories,Caps,,573
-Accessories,Camera Accessories,Remote,,380
-Accessories,Camera Accessories,Hoods,,357
+Accessories,Camera Accessories,Remote,,580
+Accessories,Camera Accessories,Hoods,,587
 Accessories,Lenses Accessories,,,620
 Accessories,Lenses Accessories,Adapter,,621
 Accessories,Lenses Accessories,Bag,,622
@@ -342,6 +375,7 @@ Accessories,Lenses Accessories,Hoods,,626
 Accessories,Lenses Accessories,Warranty,,627
 Storage,,,,629
 Storage,External Storage,,,635
+Storage,External Storage,Apple,,663
 Storage,Card Readers,,,641
 Storage,USB Flash Drives,,,642
 Storage,Flash Memory ,,,643
@@ -349,8 +383,9 @@ Storage,Flash Memory ,SD / SDHC,,644
 Storage,Flash Memory ,MicroSD ,,645
 Storage,Flash Memory ,Compact Flash ,,646
 Storage,Flash Memory ,SanDisk Memory Cards ,,647
-Storage,Flash Memory ,Compact Flash,,648
+Storage,Flash Memory ,,,648
 Printers,,,,630
 Printers,HP,,,636
 Software,,,,631
 Warranty,,,,632
+Warranty,AppleCare,,,649
