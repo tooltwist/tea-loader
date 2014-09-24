@@ -30,7 +30,7 @@ module.exports = function setup(options, imports, register) {
         // the following functions will be executed synchronously
         functions = [
             // validate,
-            initializeCategoryMapping,
+            //initializeCategoryMapping,
             //initializeVarianceMapping,
             //initializeCategoryIdMapping,
             parseDetails,
@@ -286,7 +286,8 @@ module.exports = function setup(options, imports, register) {
         
         variant.lineNumber = item.lineNumber + 1;
         variant.base = item.base;
-        variant.categoryId = categoryMap[item["product parent"].split(' ').join('_') + item["category 1"].split(' ').join('_') + item["category 2"].split(' ').join('_') + item["category 3"].split(' ').join('_')];
+        //variant.categoryId = categoryMap[item["product parent"].split(' ').join('_') + item["category 1"].split(' ').join('_') + item["category 2"].split(' ').join('_') + item["category 3"].split(' ').join('_')];
+        variant.categoryId = item["category id"];
         variant.productName = item.name;
         variant.manufacturer = item.manufacturer;
         variant.shortDescription = item.short_description;
