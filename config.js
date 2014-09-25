@@ -18,6 +18,7 @@ module.exports = [
     productHeaders:  [
                         "base",
                         "lineNumber",
+                        "category id",
                         "product parent",
                         "category 1",
                         "category 2",
